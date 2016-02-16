@@ -4,4 +4,5 @@
 		temp.className = 'addButtonSupDi';	// добавим css класс 'downloadLink' для нашей ссылки
 		temp.textContent = "+";
 			document.body.appendChild(temp); //добавляем элемент в тело документа
+			//Вот здесь вот, например.
 })();
