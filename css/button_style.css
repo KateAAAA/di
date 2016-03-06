@@ -1,6 +1,6 @@
 .addButtonSupDi {	
 	z-index: 10000;
-	position: absolute; /*absolute - родитель- окно браузера*/
+	position: fixed; /*absolute - родитель- окно браузера*/
 	right: 0;
 	top:200px;
 	height: 28px;
