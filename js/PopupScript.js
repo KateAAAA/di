@@ -2,6 +2,7 @@ $(function() {
 	chrome.storage.local.get('allEls', function (data) {
 			var temp = data['allEls'];
 			console.log(temp);
+			console.log("ну и хрень");
 		});
 	
 

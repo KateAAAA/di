@@ -13,6 +13,10 @@
 	}
 	//пока не нажали кнопку - allEl Пустой
 	var allElements = [];
+	chrome.storage.local.get('allEls', function (data) {
+			var temp = data['allEls'];
+			allElements = allElements.concat(temp);
+	});
 	
 	var getContent=function() { //функция выполняется при нажатии кнопки		
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
@@ -23,9 +27,10 @@
 		// в многомерный массив allElements добавляются даные из storage
 		chrome.storage.local.get('allEls', function (data) {
 			var temp = data['allEls'];
-			console.log(temp);
 			allElements = allElements.concat(temp);
 		});
+
+
 
 
 		//получили sto добавили и снова отпрваили новое 
@@ -38,7 +43,10 @@
 		
 		//console.log(allElements);
 		// добавляем в многомерный массив полученные со мтраницы данные и отправляем в storage 
+		console.log(element);
+		console.log(allElements);
 		allElements.push(element);
+
 		chrome.storage.local.set({'allEls': allElements});
 
 		console.log(allElements);
