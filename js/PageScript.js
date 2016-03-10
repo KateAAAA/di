@@ -11,6 +11,9 @@
 			return element.addEventListener(evnt, funct, false);
 		}
 	}
+
+	
+	var totalGlobalVar;
 	
 	var getContent=function() {		
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
@@ -20,13 +23,25 @@
 		var maxArr = []; //массив массивов 
 		
 		maxArr.push(element);
+		
+		var localInFunction;
+		
 		chrome.storage.local.set({'mArr': maxArr}, function()// отправляем многомерный массив
 		{
-			chrome.storage.local.get('arr', function (data) { // получаем
-				p = data['arr'];
-				console.log(p); // массив который приходит с popup
-			});	
+
 		}); 
+			//var self=this;
+			chrome.storage.local.get('arr', function (data) { // получаем
+				
+				var p = data['arr']; //Всегда объявляйте через var
+				//self.localInFunction = p;  // или попробуйуте без self
+				totalGlobalVar = p; //также пробуйте варианты с this
+				//console.log(p); // массив который приходит с popup
+			});	
+			//console.log(self.localInFunction);
+			console.log(totalGlobalVar);
+
+
 		
 
 		//chrome.storage.local.get('tp_val', function (data) {		
@@ -46,6 +61,8 @@
 		
 
 	}
+
+
 
 	var addButton = document.createElement('div');
 	addButton.innerHTML='+';
