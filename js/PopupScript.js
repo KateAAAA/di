@@ -1,18 +1,8 @@
 $(function() {
-	var arr;
-	chrome.storage.local.get('mArr', function (data) { //получили многомерный массив 	
-		var p = data['mArr'];
-		console.log(p);
-		//arr = p;
-		//$('body').append(p[0]);
-		chrome.storage.local.set({'arr':p}, function (data) {	 // отправили многомерный массив обратно	
-		//console.log(data['tp_val']);
-		//var p = data['arr'];
-		//console.log('getpopup');
-		//$('body').append(p[0]);
-
-	});
-	});
+	chrome.storage.local.get('allEls', function (data) {
+			var temp = data['allEls'];
+			console.log(temp);
+		});
 	
 
 	var addEvent = function(element, evnt, funct){

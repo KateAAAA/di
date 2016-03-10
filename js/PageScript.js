@@ -11,22 +11,41 @@
 			return element.addEventListener(evnt, funct, false);
 		}
 	}
-
+	//пока не нажали кнопку - allEl Пустой
+	var allElements = [];
 	
-	var totalGlobalVar;
-	
-	var getContent=function() {		
+	var getContent=function() { //функция выполняется при нажатии кнопки		
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
-		var element = [name, price, characteristics]; 
-		var maxArr = []; //массив массивов 
+		var element = [name, price, characteristics];
+
+		// в многомерный массив allElements добавляются даные из storage
+		chrome.storage.local.get('allEls', function (data) {
+			var temp = data['allEls'];
+			console.log(temp);
+			allElements = allElements.concat(temp);
+		});
+
+
+		//получили sto добавили и снова отпрваили новое 
+		//chrome.storage.local.get('allEls', function (data) {
+			//var temp = data['allEls'];
+			//console.log(temp);
+			//allElements.push(temp); 
+		//});
+
 		
-		maxArr.push(element);
+		//console.log(allElements);
+		// добавляем в многомерный массив полученные со мтраницы данные и отправляем в storage 
+		allElements.push(element);
+		chrome.storage.local.set({'allEls': allElements});
+
+		console.log(allElements);
+
+
 		
-		var localInFunction;
-		
-		chrome.storage.local.set({'mArr': maxArr}, function()// отправляем многомерный массив
+		/*chrome.storage.local.set({'mArr': maxArr}, function()// отправляем многомерный массив
 		{
 
 		}); 
@@ -40,6 +59,7 @@
 			});	
 			//console.log(self.localInFunction);
 			console.log(totalGlobalVar);
+			*/
 
 
 		
