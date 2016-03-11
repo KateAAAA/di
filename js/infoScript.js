@@ -4,6 +4,10 @@ $(function() {
 			for (i = 0; i < temp.length; i++) {
 			  $('.content').append(temp[i][1]);
 			  $('.content').append(" - ");
+			  $('.content').append(temp[i][2]);
+			  $('.content').append(" - ");
+			  //$('.content').append(temp[i][3]);
+			  $('.content').append(" - ");
 			  $('.content').append(temp[i][4]);
 			  $('.content').append('<br>');
 			}
@@ -24,7 +28,7 @@ $(function() {
 		var emptyElements = [];
 		chrome.storage.local.set({'allEls': emptyElements});
 	}
-	
+
 	var clearButton = document.createElement('button');
 	clearButton.innerHTML='clear';
 	clearButton.className='clear';

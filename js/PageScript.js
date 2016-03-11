@@ -23,11 +23,8 @@
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
 		var id =name.split(' ')[0];
-			
-		var element = [id, name, price, characteristics];
-
-		
-
+		var store = window.location.href.split('.')[1]
+		var element = [id, name, price, characteristics,store];
 
 
 		alert('вы добавили к сравнению: '+name);

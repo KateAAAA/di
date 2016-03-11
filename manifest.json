@@ -12,10 +12,16 @@
     "default_icon":"images/icon.png",
     "default_popup": "popup.html"
     },
+ 
 	"background": {
 		"persistent": false,
 		"scripts": ["js/PopupScript.js"]
 	  },
+
+   
+
+  "options_page": "options.html",
+
   "content_scripts": [
     {
       "matches": ["http://technopoint.ru/*",
