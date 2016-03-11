@@ -11,18 +11,14 @@
 			return element.addEventListener(evnt, funct, false);
 		}
 	}
-	//пока не нажали кнопку - allEl Пустой
-	var allElements = [];
-	chrome.storage.local.get('allEls', function (data) {
-			var temp = data['allEls'];
-			console.log(temp);
-			if (temp === undefined || temp === null) {
-				temp = [];
-			}
-			console.log(allElements);
-			allElements = allElements.concat(temp);
-			console.log(allElements);
-		chrome.storage.local.set({'allEls': allElements});
+	
+	var storage = chrome.storage.local;
+	var keyInStorage = 'AllElls';
+	
+	storage.get('AllElls', function (data) {			
+		if (!Array.isArray(data['AllElls'])) {			
+			storage.set({'AllElls':[]});
+		}
 	});
 	
 	var getContent=function() { //функция выполняется при нажатии кнопки		
@@ -36,25 +32,14 @@
 		var store = window.location.href.split('.')[1];
 
 		var element = [id, name, price, characteristics,store];
-
-		alert('вы добавили к сравнению: '+ name);
-
-		// в многомерный массив allElements добавляются даные из storage
-		chrome.storage.local.get('allEls', function (data) {
-			var temp = data['allEls'];
-			console.log(temp);
-			console.log(allElements);
-			allElements = allElements.concat(temp);
-			console.log(allElements);
-			allElements.push(element);
-		chrome.storage.local.set({'allEls': allElements});
-		allElements=[];
-
-		});
-		//console.log(allElements);
-
-		// добавляем в многомерный массив полученные со мтраницы данные и отправляем в storage 
 		
+		storage.get('AllElls', function (data) {						
+			data['AllElls'].push(element);			
+			storage.set({'AllElls': data['AllElls']}, function() {
+				alert('вы добавили к сравнению: '+ name);
+				console.log(data['AllElls']);
+			});
+		});		
 	}
 
 

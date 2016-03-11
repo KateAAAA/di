@@ -1,6 +1,8 @@
 $(function() {
-	chrome.storage.local.get('allEls', function (data) {
-			var temp = data['allEls'];
+	
+	var storage = chrome.storage.local;
+	storage.get('AllElls', function (data) {
+			var temp = data['AllElls'];
 			for (i = 0; i < temp.length; i++) {
 			  $('.content').append(temp[i][1]);
 			  $('.content').append(" - ");
@@ -21,8 +23,7 @@ $(function() {
 
 	var clearContent = function () {
 		$('.content').empty();
-		var emptyElements = [];
-		chrome.storage.local.set({'allEls': emptyElements});
+		storage.set({'AllElls': []});
 		
 	}
 	
