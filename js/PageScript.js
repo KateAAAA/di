@@ -15,7 +15,14 @@
 	var allElements = [];
 	chrome.storage.local.get('allEls', function (data) {
 			var temp = data['allEls'];
+			console.log(temp);
+			if (temp === undefined || temp === null) {
+				temp = [];
+			}
+			console.log(allElements);
 			allElements = allElements.concat(temp);
+			console.log(allElements);
+		chrome.storage.local.set({'allEls': allElements});
 	});
 	
 	var getContent=function() { //функция выполняется при нажатии кнопки		
@@ -23,21 +30,31 @@
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
 		var id =name.split(' ')[0];
-		var store = window.location.href.split('.')[1]
+		name = name.replace(id, "");
+
+
+		var store = window.location.href.split('.')[1];
+
 		var element = [id, name, price, characteristics,store];
 
-
-		alert('вы добавили к сравнению: '+name);
+		alert('вы добавили к сравнению: '+ name);
 
 		// в многомерный массив allElements добавляются даные из storage
 		chrome.storage.local.get('allEls', function (data) {
 			var temp = data['allEls'];
+			console.log(temp);
+			console.log(allElements);
 			allElements = allElements.concat(temp);
+			console.log(allElements);
+			allElements.push(element);
+		chrome.storage.local.set({'allEls': allElements});
+		allElements=[];
+
 		});
+		//console.log(allElements);
 
 		// добавляем в многомерный массив полученные со мтраницы данные и отправляем в storage 
-		allElements.push(element);
-		chrome.storage.local.set({'allEls': allElements});
+		
 	}
 
 

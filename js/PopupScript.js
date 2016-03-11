@@ -23,6 +23,7 @@ $(function() {
 		$('.content').empty();
 		var emptyElements = [];
 		chrome.storage.local.set({'allEls': emptyElements});
+		
 	}
 	
 	var clearButton = document.createElement('button');
