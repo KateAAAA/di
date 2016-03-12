@@ -12,15 +12,28 @@
     "default_icon":"images/icon.png",
     "default_popup": "popup.html"
     },
+<<<<<<< HEAD
 	"background": {
 		"persistent": false,
 		"scripts": ["js/BackgroundScript.js"]
 	  },
+=======
+ 
+	"background": {
+		"persistent": false,
+		"scripts": ["js/PopupScript.js"]
+	  },
+
+   
+
+  "options_page": "options.html",
+
+>>>>>>> refs/remotes/origin/test
   "content_scripts": [
     {
       "matches": ["http://technopoint.ru/*",
       "http://www.dns-shop.ru/*",
-      "http://www.citilink.ru/*"
+      "http://www.citilink.ru/catalog/mobile/cell_phones/*"
       ],
       "js": ["js/PageScript.js"],
       "css": ["css/button_style.css"]
