@@ -1,16 +1,26 @@
 $(function() {
-	chrome.storage.local.get('allEls', function (data) {
-			var temp = data['allEls'];
+	
+	var storage = chrome.storage.local;
+	storage.get('AllElls', function (data) {
+			var temp = data['AllElls'];
 			for (i = 0; i < temp.length; i++) {
-			  $('.content').append(temp[i][1]);
-			  $('.content').append(" - ");
-			  $('.content').append(temp[i][2]);
-			  $('.content').append(" - ");
-			  //$('.content').append(temp[i][3]);
-			  $('.content').append(" - ");
-			  $('.content').append(temp[i][4]);
-			  $('.content').append('<br>');
+			  $('.contentInfo').append(temp[i][1]);
+			  $('.contentInfo').append(" - ");
+			  $('.contentInfo').append(temp[i][2]);
+			  $('.contentInfo').append(" - ");
+			  $('.contentInfo').append(temp[i][3]);
+			  $('.contentInfo').append(" - ");
+			  $('.contentInfo').append(temp[i][4]+'<br><br><br><br><br><br>');
 			}
+			console.log(temp[0][3]);
+			console.log(temp[0][3].indexOf());
+			// элемент-список UL
+			var list = document.getElementById('list');
+			// новый элемент
+			var li = document.createElement('LI');
+			li.innerHTML = '2';
+			// добавление в конец
+			list.appendChild(li);
 		});
 	
 
@@ -25,10 +35,9 @@ $(function() {
 
 	var clearContent = function () {
 		$('.content').empty();
-		var emptyElements = [];
-		chrome.storage.local.set({'allEls': emptyElements});
+		storage.set({'AllElls': []});		
 	}
-
+	
 	var clearButton = document.createElement('button');
 	clearButton.innerHTML='clear';
 	clearButton.className='clear';

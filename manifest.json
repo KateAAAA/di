@@ -25,8 +25,8 @@
   "content_scripts": [
     {
       "matches": ["http://technopoint.ru/*",
-      "http://www.dns-shop.ru/*",
-      "http://www.citilink.ru/catalog/mobile/cell_phones/*"
+      "http://www.dns-shop.ru/product/*/*/",
+      "http://www.citilink.ru/catalog/*/*/*"
       ],
       "js": ["js/PageScript.js"],
       "css": ["css/button_style.css"]
