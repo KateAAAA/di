@@ -6,11 +6,10 @@ $(function() {
 			for (i = 0; i < temp.length; i++) {
 			  $('.content').append(temp[i][1]);
 			  $('.content').append(" - ");
-			  $('.content').append(temp[i][4]);
+			  $('.content').append(temp[i][3]);
 			  $('.content').append('<br>');
 			}
 		});
-	
 
 	var addEvent = function(element, evnt, funct){
 		if (element.attachEvent) {

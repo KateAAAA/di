@@ -23,15 +23,26 @@
 	function addInList(element) {
 		storage.get('AllElls', function (data) {	
 			
-			//data['AllElls'].indexOf(element);  // - проверка на дубли	 - всегда возращает -1		
+			//data['AllElls'].indexOf(element);  // - проверка на дубли	 - всегда возращает -1	
 
-			data['AllElls'].push(element);			
-			storage.set({'AllElls': data['AllElls']}, function() {
-				alert('вы добавили к сравнению: '+ element[1]);
-				console.log(data['AllElls']);
-			});
+			var p=0;
+			for(var i=0; i<data['AllElls'].length;i++) {
+				x1 = data['AllElls'][i].join();
+				x2 = element.join();
+				if(x1==x2) p++;
+			}
+			if(p==0) {
+				data['AllElls'].push(element);
+				storage.set({'AllElls': data['AllElls']}, function() {
+					alert('вы добавили к сравнению: '+ element[1]);
+				});	
+			}
+			else {
+				alert('товар уже добавлен к сравнению: '+ element[1]);
+			}
 		});	
 	}
+
 	
 	function getFromCitilink() {
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
@@ -40,8 +51,7 @@
 		var id =name.split(' ')[0];
 		name = name.replace(id, "");
 		var store = 'Ситилинк';
-
-		var element = [id, name, price, characteristics,store];
+		var element = [id, name, store,price,characteristics];		
 		addInList(element);
 	}
 
@@ -51,30 +61,29 @@
 		id = id.replace("Код товара: ", "");
 		var price = document.getElementsByClassName('price_g')[0].innerText;
 		var characteristics = document.getElementsByClassName('table-params table-no-bordered')[0].innerText;
-		var store = 'ДНС';
-		
-		var element = [id, name, price, characteristics,store];
-
+		var store = 'ДНС';		
+		var element = [id, name, store,price,characteristics];	
 		addInList(element);
 	}
 
 	var getContent=function() { //функция выполняется при нажатии кнопки
-
-		var storeName = window.location.href.split('.')[1];// add case 
-		//console.log(storeName);	
-		
+		var storeName = window.location.href.split('.')[1];	
 		switch(storeName) {
 			case 'citilink': getFromCitilink();break;
 			case 'dns-shop': getFromDns();break;			
 			default: console.log('error');
 		}
 	}
-
+	var test = function() {
+		addButton.cursor = 'pointer';
+		addButton.color = 'green';
+	}
 
 	var addButton = document.createElement('div');
 	addButton.innerHTML='+';
 	addButton.className='addButtonSupDi';
 	addEvent(addButton,'click',getContent); //по нажанию на кнопку выполняется функция getContent
+	//addEvent(addButton,'mouseover',test);
 	document.body.appendChild(addButton); 
 
 })();

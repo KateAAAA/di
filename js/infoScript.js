@@ -2,25 +2,26 @@ $(function() {
 	
 	var storage = chrome.storage.local;
 	storage.get('AllElls', function (data) {
-			var temp = data['AllElls'];
-			for (i = 0; i < temp.length; i++) {
-			  $('.contentInfo').append(temp[i][1]);
-			  $('.contentInfo').append(" - ");
-			  $('.contentInfo').append(temp[i][2]);
-			  $('.contentInfo').append(" - ");
-			  $('.contentInfo').append(temp[i][3]);
-			  $('.contentInfo').append(" - ");
-			  $('.contentInfo').append(temp[i][4]+'<br><br><br><br><br><br>');
+			var temp = data['AllElls']; // массив массивов
+
+			var newElem=document.createElement("table");
+			for (var j = 0; j < 5; j++) { // j=1 не робит
+				var newRow=newElem.insertRow(j);
+				for (var i = 0; i < temp.length; i++) {
+					var newCell = newRow.insertCell(i);
+					newCell.width="200";
+					if(j!=4) newCell.innerHTML=temp[i][j];
+					else {
+						var ch = temp[i][j].split('\n');
+						
+					}					
+				}
 			}
-			console.log(temp[0][3]);
-			console.log(temp[0][3].indexOf());
-			// элемент-список UL
-			var list = document.getElementById('list');
-			// новый элемент
-			var li = document.createElement('LI');
-			li.innerHTML = '2';
-			// добавление в конец
-			list.appendChild(li);
+
+
+
+document.body.appendChild(newElem);
+			
 		});
 	
 
