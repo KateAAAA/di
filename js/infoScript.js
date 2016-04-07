@@ -4,7 +4,7 @@ $(function() {
 	storage.get('AllElls', function (data) {
 			var temp = data['AllElls']; // массив массивов
 
-			var newElem=document.createElement("table");
+			var newElem=document.createElement("table"); 
 			for (var j = 0; j < 5; j++) { // j=1 не робит
 				var newRow=newElem.insertRow(j);
 				for (var i = 0; i < temp.length; i++) {

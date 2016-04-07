@@ -1,18 +1,27 @@
-<!doctype html>
-<html>
-  <head>
-    <title>MyApp</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-  <div class = "main">
-    <div>¬ы добавии к сравнению следующие товары: </div>
-    <div class="content">
-      
-    </div>
-  </div>
-    
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/infoScript.js"></script>
-  </body>
+<html ng-app="phonecatApp">
+<head>
+  <script src="angular.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+
+<body ng-controller="PhoneListCtrl">
+
+<!--  <ul>
+    <li ng-repeat="phone in phones">
+      <span>{{phone.name}}</span>
+      <p>{{phone.snippet}}</p>
+    </li>
+  </ul>-->
+
+  <table>
+  	<tr>
+  		<td ng-repeat="phone in phones">
+        <span>{{phone.name}}</span>
+        <p>{{phone.snippet}}</p>
+        <p>{{phone.price}}</p>
+      </td>
+  	</tr>
+  </table>
+
+</body>
 </html>

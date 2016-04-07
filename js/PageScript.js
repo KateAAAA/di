@@ -77,13 +77,17 @@
 	var test = function() {
 		addButton.cursor = 'pointer';
 		addButton.color = 'green';
+		addButton.css.add="cursor:poiter"//!!!!!!!!
+		addButton.innerHTML='-';
 	}
 
 	var addButton = document.createElement('div');
 	addButton.innerHTML='+';
 	addButton.className='addButtonSupDi';
 	addEvent(addButton,'click',getContent); //по нажанию на кнопку выполняется функция getContent
-	//addEvent(addButton,'mouseover',test);
+
+
+	addEvent(addButton,'mouseover',test);
 	document.body.appendChild(addButton); 
 
 })();
