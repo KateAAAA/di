@@ -2,26 +2,32 @@
 <head>
   <script src="angular.js"></script>
   <script src="js/controllers.js"></script>
+   <title>MyApp</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body ng-controller="PhoneListCtrl">
-
-<!--  <ul>
-    <li ng-repeat="phone in phones">
-      <span>{{phone.name}}</span>
-      <p>{{phone.snippet}}</p>
-    </li>
-  </ul>-->
-
-  <table>
+ <table>
   	<tr>
+      <td>
+       <table class="tableInfo">
+        <tr><td>Name</td></tr>
+        <tr><td>store</td></tr>
+        <tr><td>price</td></tr>
+        <tr><td>type</td></tr>
+        <tr><td>other</td></tr>
+      </table>
+      </td>
   		<td ng-repeat="phone in phones">
-        <span>{{phone.name}}</span>
-        <p>{{phone.snippet}}</p>
-        <p>{{phone.price}}</p>
+      <table class="tableInfo">
+        <tr><td class="titleHeader">{{phone[1]}}</td></tr>
+        <tr><td>{{phone[2]}}</td></tr>
+        <tr><td>{{phone[3]}}</td></tr>
+        <tr><td>{{phone[4]}}</td></tr>
+        <tr><td>{{phone[5]}}</td></tr>
+      </table>
       </td>
   	</tr>
   </table>
-
 </body>
 </html>

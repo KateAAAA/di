@@ -27,7 +27,7 @@ $(function() {
 	}
 	
 	var clearButton = document.createElement('button');
-	clearButton.innerHTML='clear';
+	clearButton.innerHTML='Clear list';
 	clearButton.className='clear';
 	addEvent(clearButton,'click',clearContent);  //см addlisten jquery
 	document.body.appendChild(clearButton);	

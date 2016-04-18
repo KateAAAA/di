@@ -22,13 +22,10 @@
 
 	function addInList(element) {
 		storage.get('AllElls', function (data) {	
-			
-			//data['AllElls'].indexOf(element);  // - проверка на дубли	 - всегда возращает -1	
-
 			var p=0;
 			for(var i=0; i<data['AllElls'].length;i++) {
-				x1 = data['AllElls'][i].join();
-				x2 = element.join();
+				var x1 = data['AllElls'][i][0];
+				var x2 = element[0];
 				if(x1==x2) p++;
 			}
 			if(p==0) {
@@ -45,13 +42,15 @@
 
 	
 	function getFromCitilink() {
+		var url=location.pathname;
+		var type= 'тип';
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
 		var id =name.split(' ')[0];
 		name = name.replace(id, "");
 		var store = 'Ситилинк';
-		var element = [id, name, store,price,characteristics];		
+		var element = [url, name, store, price, type, characteristics];	
 		addInList(element);
 	}
 
@@ -74,20 +73,20 @@
 			default: console.log('error');
 		}
 	}
-	var test = function() {
-		addButton.cursor = 'pointer';
-		addButton.color = 'green';
-		addButton.css.add="cursor:poiter"//!!!!!!!!
-		addButton.innerHTML='-';
+
+	var mouseoverButton = function() { 
+		addButton.className='addButtonSupDiHover';
+	}
+	var mouseoutButton = function() {
+		addButton.className='addButtonSupDi';
 	}
 
-	var addButton = document.createElement('div');
+	var addButton = document.createElement('button');
 	addButton.innerHTML='+';
 	addButton.className='addButtonSupDi';
 	addEvent(addButton,'click',getContent); //по нажанию на кнопку выполняется функция getContent
-
-
-	addEvent(addButton,'mouseover',test);
+	addEvent(addButton,'mouseover',mouseoverButton);
+	addEvent(addButton,'mouseout',mouseoutButton);
 	document.body.appendChild(addButton); 
 
 })();

@@ -1,26 +1,26 @@
 $(function() {
 	
 	var storage = chrome.storage.local;
-	storage.get('AllElls', function (data) {
-			var temp = data['AllElls']; // массив массивов
 
-			var newElem=document.createElement("table"); 
+	storage.get('AllElls', function (data) {
+			var elements = data['AllElls']; // получили всю информацию
+
+			var newElem=document.createElement("table"); //создали табличку
+
 			for (var j = 0; j < 5; j++) { // j=1 не робит
 				var newRow=newElem.insertRow(j);
-				for (var i = 0; i < temp.length; i++) {
+				console.log(newRow);
+				for (var i = 0; i < elements.length; i++) {
 					var newCell = newRow.insertCell(i);
 					newCell.width="200";
-					if(j!=4) newCell.innerHTML=temp[i][j];
+					if(j!=4) newCell.innerHTML=elements[i][j];
 					else {
-						var ch = temp[i][j].split('\n');
-						
+						var ch = elements[i][j].split('\n');
+						console.log(ch);						
 					}					
 				}
 			}
-
-
-
-document.body.appendChild(newElem);
+			document.body.appendChild(newElem);
 			
 		});
 	
