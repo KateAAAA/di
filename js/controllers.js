@@ -17,7 +17,7 @@
 
                                 storage.get('AllElls', function (data) {
 
-					 $scope.phones = data; 
-
+					 $scope.phones = data;
+					 $scope.orderProp = "data['AllElls'][2]";
 				});
 

@@ -11,13 +11,13 @@ $(function() {
 
 	var clearContent = function () {
 		$('.content').empty();
-		storage.set({'AllElls': []});		
+		storage.set({'AllElls': []});
+		location.reload();		
 	}
 
 	var clearButton = document.createElement('button');
 	clearButton.innerHTML='Clear list';
-	clearButton.className='clear';
+	clearButton.className='func';
 	addEvent(clearButton,'click',clearContent);  //см addlisten jquery
 	document.body.childNodes[1].appendChild(clearButton);	
-	console.log(document.body.childNodes[1]);
 });

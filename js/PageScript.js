@@ -43,8 +43,8 @@
 	
 	function getFromCitilink() {
 		var url=location.pathname;
-		var type= 'тип';
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
+  		var type= name.split(' ')[1];
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
 		var id =name.split(' ')[0];
