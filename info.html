@@ -2,11 +2,25 @@
 <head>
   <script src="angular.js"></script>
   <script src="js/controllers.js"></script>
+ 
    <title>MyApp</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body ng-controller="PhoneListCtrl">
+<div class="difFunctions">
+  <div class="func">
+    Search: <input ng-model="query">
+  </div>
+  <div class="func">
+    Sort by:
+    <select ng-model="orderProp">
+      <option value="name">Alphabetical</option>
+      <option value="age">Newest</option>
+    </select>
+  </div>
+      
+</div>
  <table>
   	<tr>
       <td>
@@ -18,7 +32,7 @@
         <tr><td>other</td></tr>
       </table>
       </td>
-  		<td ng-repeat="phone in phones">
+  		<td ng-repeat="phone in phones  | filter:query">
       <table class="tableInfo">
         <tr><td class="titleHeader">{{phone[1]}}</td></tr>
         <tr><td>{{phone[2]}}</td></tr>
@@ -29,5 +43,7 @@
       </td>
   	</tr>
   </table>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/infoScript.js"></script>
 </body>
 </html>

@@ -32,3 +32,9 @@ td {
 .titleHeader {
 	font-weight: bold;
 }
+.difFunctions {
+    display: -webkit-box;
+}
+.func {
+	padding: 10px;
+}
