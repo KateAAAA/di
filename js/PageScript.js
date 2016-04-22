@@ -55,13 +55,13 @@
 	}
 
 	function getFromDns(){
+		var url=location.pathname;
 		var name = document.getElementsByClassName('page-title price-item-title')[0].innerText;
-		var id = document.getElementsByClassName('price-item-code')[0].innerText;
-		id = id.replace("Код товара: ", "");
+		var type =  "тип";
 		var price = document.getElementsByClassName('price_g')[0].innerText;
 		var characteristics = document.getElementsByClassName('table-params table-no-bordered')[0].innerText;
 		var store = 'ДНС';		
-		var element = [id, name, store,price,characteristics];	
+		var element = [url, name, store, price, type, characteristics];		
 		addInList(element);
 	}
 

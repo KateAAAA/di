@@ -15,36 +15,35 @@
   <div class="func">
     Sort by:
     <select ng-model="orderProp">
-      <option value="">порядку добавления</option>
-      <option value="data['AllElls'][0]">Названию</option>
-      <option value="data['AllElls'][1]">Магазину</option>
-      <option value="data['AllElls'][2]">Дешевого к Дорогому</option>
+      <option value="">по порядку добавления</option>
+      <option value="name">по алфавиту</option>
+      <option value="price">по возрастанию цены</option>
     </select>
-  </div>
-      
+  </div>    
 </div>
- <table>
+
+<table>
   	<tr>
       <td>
-       <table class="tableInfo">
-        <tr><td>Name</td></tr>
-        <tr><td>store</td></tr>
-        <tr><td>price</td></tr>
-        <tr><td>type</td></tr>
-        <tr><td>other</td></tr>
-      </table>
+        <table class="tableInfo">
+          <tr><td>Name</td></tr>
+          <tr><td>store</td></tr>
+          <tr><td>price</td></tr>
+          <tr><td>type</td></tr>
+          <tr><td>other</td></tr>
+        </table>
       </td>
   		<td ng-repeat="phone in phones  | filter:query | orderBy:orderProp">
       <table class="tableInfo">
-        <tr><td class="titleHeader">{{phone[1]}}</td></tr>
-        <tr><td>{{phone[2]}}</td></tr>
-        <tr><td>{{phone[3]}}</td></tr>
-        <tr><td>{{phone[4]}}</td></tr>
-        <tr><td>{{phone[5]}}</td></tr>
+        <tr><td class="titleHeader">{{phone.name}}</td></tr>
+        <tr><td>{{phone.store}}</td></tr>
+        <tr><td>{{phone.price}} руб.</td></tr>
+        <tr><td>{{phone.type}}</td></tr>
       </table>
       </td>
   	</tr>
-  </table>
+</table>
+
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/infoScript.js"></script>
 </body>
