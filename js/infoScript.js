@@ -1,3 +1,4 @@
+
 $(function() {
 	var storage = chrome.storage.local;
 	var addEvent = function(element, evnt, funct){

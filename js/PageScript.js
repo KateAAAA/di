@@ -1,7 +1,9 @@
 // этот скрипт выполняется на страницах магазинов
 // он добавляет кнопку, которая по щелчку передает некоторые данные в popup.js
-
 (function() {
+
+	var TypeArr =['смартфон','холодильник','процессор','ноутбук','ультрабук','планшет','мультиварка'];
+	
 	var addEvent = function(element, evnt, funct){
 		if (element.attachEvent) {
 			return element.attachEvent('on'+ evnt, funct);
@@ -44,7 +46,18 @@
 	function getFromCitilink() {
 		var url=location.pathname;
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
-  		var type= name.split(' ')[1];
+
+  		for(var i=0; i<TypeArr.length;i++) {
+  			var nameTemp=name.toLocaleLowerCase();
+  			n = nameTemp.indexOf(TypeArr[i]);
+  			if(n>-1) {
+  			  var type = TypeArr[i];
+  			  break;	
+  			} 
+  		}
+  		if (i == TypeArr.length) {
+  			var type = "неопределено";
+  		}
   		var price = document.getElementsByClassName('standart_price')[0].children[0].innerText; // узнали стандартную цен
 		var characteristics = document.getElementsByClassName('product_features')[0].children[0].innerText; // характеристики
 		var id =name.split(' ')[0];
@@ -57,7 +70,17 @@
 	function getFromDns(){
 		var url=location.pathname;
 		var name = document.getElementsByClassName('page-title price-item-title')[0].innerText;
-		var type =  "тип";
+		for(var i=0; i<TypeArr.length;i++) {
+  			var nameTemp=name.toLocaleLowerCase();
+  			n = nameTemp.indexOf(TypeArr[i]);
+  			if(n>-1) {
+  			  var type = TypeArr[i];
+  			  break;	
+  			} 
+  		}
+  		if (i == TypeArr.length) {
+  			var type = "неопределено";
+  		}
 		var price = document.getElementsByClassName('price_g')[0].innerText;
 		var characteristics = document.getElementsByClassName('table-params table-no-bordered')[0].innerText;
 		var store = 'ДНС';		
