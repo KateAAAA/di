@@ -1,7 +1,6 @@
 // этот скрипт выполняется на страницах магазинов
 // он добавляет кнопку, которая по щелчку передает некоторые данные в popup.js
 (function() {
-
 	var TypeArr =['смартфон','холодильник','процессор','ноутбук','ультрабук','планшет','мультиварка'];
 	
 	var addEvent = function(element, evnt, funct){
@@ -44,7 +43,7 @@
 
 	
 	function getFromCitilink() {
-		var url=location.pathname;
+		var url='http://www.citilink.ru'+location.pathname;
 		var name = document.getElementsByClassName('product_header')[0].children[1].innerText; // узнали имя телефона + id (вырезать Id) 		
 
   		for(var i=0; i<TypeArr.length;i++) {
@@ -63,6 +62,7 @@
 		var id =name.split(' ')[0];
 		name = name.replace(id, "");
 		var store = 'Ситилинк';
+		console.log(url);
 		var element = [url, name, store, price, type, characteristics];	
 		addInList(element);
 	}

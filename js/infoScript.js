@@ -9,16 +9,28 @@ $(function() {
 			return element.addEventListener(evnt, funct, false);
 		}
 	}
-
+	
 	var clearContent = function () {
 		$('.content').empty();
-		storage.set({'AllElls': []});
+		storage.clear();
 		location.reload();		
+	}
+
+	var clearOne = function () {
+		console.log("it work");	
 	}
 
 	var clearButton = document.createElement('button');
 	clearButton.innerHTML='Clear list';
 	clearButton.className='func';
 	addEvent(clearButton,'click',clearContent);  //см addlisten jquery
-	document.body.childNodes[1].appendChild(clearButton);	
+	document.body.childNodes[1].appendChild(clearButton);
+
+
+	var clearOne = document.createElement('button');
+	clearOne.innerHTML='delOne';
+	clearOne.className='delOne"';
+	addEvent(clearOne,'click',clearOne);  
+	document.body.childNodes[1].appendChild(clearOne);
+		
 });

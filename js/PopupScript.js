@@ -4,6 +4,8 @@ $(function() {
 	storage.get('AllElls', function (data) {
 			var temp = data['AllElls'];
 			for (i = 0; i < temp.length; i++) {
+			  $('.content').append(i+1);
+			  $('.content').append("  )  ");
 			  $('.content').append(temp[i][1]);
 			  $('.content').append(" - ");
 			  $('.content').append(temp[i][3]);
@@ -22,12 +24,13 @@ $(function() {
 
 	var clearContent = function () {
 		$('.content').empty();
-		storage.set({'AllElls': []});
+		//storage.set({'AllElls': []});
+		storage.clear();
 		
 	}
 	
 	var clearButton = document.createElement('button');
-	clearButton.innerHTML='Clear list';
+	clearButton.innerHTML='Очистить список';
 	clearButton.className='clear';
 	addEvent(clearButton,'click',clearContent);  //СЃРј addlisten jquery
 	document.body.appendChild(clearButton);	

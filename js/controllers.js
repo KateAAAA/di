@@ -8,9 +8,10 @@ element.controller('PhoneListCtrl', function ($scope){
 		$scope.$apply(function(){
 			$scope.phones = data['AllElls']; 
 			var newPhones=[];//!!
+			//тут тип динамически определяется
 			for (var i = 0; i < $scope.phones.length; i++) {
 				var newPhone={};
-
+				newPhone.url=$scope.phones[i][0]; 
 				newPhone.name=$scope.phones[i][1];
 				newPhone.store=$scope.phones[i][2];
 				newPhone.price=parseInt($scope.phones[i][3].replace(/\D+/g,""));// только число

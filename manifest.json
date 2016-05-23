@@ -20,13 +20,13 @@
 
    
 
-  "options_page": "options.html",
+
 
   "content_scripts": [
     {
-      "matches": ["http://technopoint.ru/*",
-      "http://www.dns-shop.ru/product/*/*/",
-      "http://www.citilink.ru/catalog/*/*/*"
+      "matches": ["http://www.dns-shop.ru/product/*/*/",
+      "http://www.citilink.ru/catalog/mobile/*/*/",
+      "http://www.citilink.ru/catalog/computers_and_notebooks/*/*/"
       ],
       "js": ["js/PageScript.js"],
       "css": ["css/button_style.css"]
