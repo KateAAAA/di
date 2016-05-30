@@ -1,11 +1,12 @@
 body {
-	
+	background-color: rgba(150,159,220,0.1);
 }
 .main {
 	margin: 0;
 	padding: 0;
 	width: 600px;
 	height: auto;
+
 }
 .mainInfo {
 	margin: 0;

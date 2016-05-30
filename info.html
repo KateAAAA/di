@@ -8,6 +8,7 @@
 </head>
 
 <body ng-controller="PhoneListCtrl">
+
 <div class="difFunctions">
   <div class="func">
     Search: <input ng-model="query">
@@ -21,8 +22,21 @@
     </select>
   </div>    
 </div>
-<table id = "table1">
-  	<tr>
+<div id="main" ng-app>
+    
+    <nav class="{{active}}" ng-click="$event.preventDefault()">
+        <a href=# ng-click="active='смартфон'">Смартфоны</a>
+        <a href="telefon" class="home" ng-click="active='смартфон'">Смартфоны</a>
+        <a href="frozen" class="projects" ng-click="active='холодильник'">Холодильники</a>
+        <a href="#" class="services" ng-click="active='оутбук'">Ноутбуки</a>
+        <a href="#" class="contact" ng-click="active='планшет'">Планшеты</a>
+        <a href="Мультиварки" class="contact" ng-click="active='мультиварка'">Мультиварка</a>
+        <a href="other" class="contact" ng-click="active='неопределено'">Другое</a>
+    </nav>
+   
+    <p ng-hide="active">
+    <table id = "table1">
+    <tr>
       <td>
         <table id="tableInfo">
           <tr><td></td></tr>
@@ -33,17 +47,56 @@
           <tr><td>other</td></tr>
         </table>
       </td>
-  		<td ng-repeat="phone in phones  | filter:query | orderBy:orderProp">
+      <td ng-repeat="phone in phones  | filter:query | orderBy:orderProp">
       <table id="tableInfo">
         <tr><td ><div class="delOne">del</div></td></tr>
         <tr><td class="titleHeader"><a href="{{phone.url}}">{{phone.name}}</a></td></tr>
         <tr><td>{{phone.store}}</td></tr>
-        <tr><td>{{phone.price}} Г°ГіГЎ.</td></tr>
+        <tr><td>{{phone.price}}</td></tr>
         <tr><td>{{phone.type}}</td></tr>
       </table>
       </td>
-  	</tr>
+    </tr>
 </table>
+
+    </p>
+
+
+    <p ng-show="active">вы выбрали <b>{{active}}</b>
+    <table id = "table1">
+    <tr>
+      <td>
+        <table id="tableInfo">
+          <tr><td></td></tr>
+          <tr><td>name</td></tr>
+          <tr><td>store/td></tr>
+          <tr><td>price</td></tr>
+          <tr><td>type</td></tr>
+          <tr><td>other</td></tr>
+        </table>
+      </td>
+     
+      <td ng-repeat="phone in phones | filter:active" class="answer" >
+      <table id="tableInfo">
+        <tr><td ><div class="delOne">del</div></td></tr>
+        <tr><td class="titleHeader"><a href="{{phone.url}}">{{phone.name}}</a></td></tr>
+        <tr><td>{{phone.store}}</td></tr>
+        <tr><td>{{phone.price}}</td></tr>
+        <tr><td>{{phone.type}}</td></tr>
+      </table>
+      </td>
+    </tr>
+</table>
+
+
+
+    </p>
+</div>
+
+  <script src="app.js"></script>
+  <script src="heroes.js"></script>
+  <script src="crisis.js"></script>
+  <script src="dialog.js"></script>
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/infoScript.js"></script>
